@@ -1,0 +1,35 @@
+body{
+    height: 100%;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+table {
+    /* border: 1px black solid; */
+    margin: auto;
+    width: 50%;
+}
+
+td {
+    border-bottom: 1px black solid;
+}
+
+th{
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+}
+
+.center-table-item{
+    display: flex;
+    justify-content: center;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+.header .header-text{
+    font-size: xx-large;
+    font-weight: bold;
+    font-style: italic;
+}
