@@ -7,17 +7,26 @@
     <?php include 'libraries.php'?>
 </head>
 <body>
-    <h1>Employee Login</h1>
-
+    <div class="header">
+        <div class="header-text">Employee Login</div>
+    </div>
+    <br>
     <form action="employee_home.php" method="POST">
-        <label for="username">Username: </label>
-        <input type="text" id="username" name="username" require>
-        <br>
-        <label for="password">Password: </label>
-        <input type="password" id="password" name="password" require>
-        <br>
-        <button type="submit">Login!</button>
-
+        <div class="input-form">
+            <div class="input-item">
+                <label for="username">Username: </label>
+                <br>
+                <input type="text" id="username" name="username" require>
+            </div>
+            <div class="input-item">
+                <label for="password">Password: </label>
+                <br>
+                <input type="password" id="password" name="password" require>
+            </div>
+            <div class="input-submit">
+                <input type="submit" value="Login!">
+            </div>
+        </div>
     </form>
 
 </body>

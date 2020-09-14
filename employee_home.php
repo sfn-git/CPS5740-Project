@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Home</title>
+    <?php include 'libraries.php'?>
 </head>
 <body>
 <?php
@@ -14,7 +15,7 @@
 
     // If empty, does not allow program to proceed
     if($username == "" || $password == ""){
-        die("<h1>Cannot login with empty username or password</h1>");
+        die("<div class='error-message'>Cannot login with empty username or password</div>");
     }
 
     include 'dbconfig.php';
@@ -33,30 +34,29 @@
             continue_program($em_id);
         }else{
             mysqli_close($conn);
-            die("Employee $username exist in the database, but the password does not match. Please <a href='employee_login.php'>try again</a>");
+            die("<div class='error-message'>Employee $username exist in the database, but the password does not match. Please<a href='employee_login.php'>try again.</a></div>");
         }
     }else{
         mysqli_close($conn);
-        die("Login ID $username does not exist . Please <a href='employee_login.php'>try again</a>");
+        die("<div class='error-message'>Login ID $username does not exist . Please <a href='employee_login.php'>try again</a></div>");
     }
 
 function continue_program($id){
     
     $user;
 
+    echo "<div class='user-info'>";
     // Displays User's IP
     $ip = $_SERVER['REMOTE_ADDR'];
-    echo "Your IP: $ip";
-    echo "<br>";
+    echo "<div class='user-info-item'>Your IP: $ip</div>";
 
     // Checks if from kean
     $ip_breakdown = explode(".", $ip);
     if(($ip_breakdown[0] == 131 && $ip_breakdown[1] == 125) || $ip_breakdown[0] == 10){
-        echo "You are from Kean University";
+        echo "<div class='user-info-item'>You are from Kean University</div>";
     }else{
-        echo "You are NOT from Kean University";
+        echo "<div class='user-info-item'>You are NOT from Kean University</div>";
     }
-    echo "<br>";
 
     include 'dbconfig.php';
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
@@ -70,14 +70,13 @@ function continue_program($id){
     mysqli_close($conn);
 
     if($user["role"] == "M"){
-        echo "Welcome manager: ". $user['name'];
-        echo "<br>";
-        echo "<a href='employee_logout.php'>Manager Logout</a>";
+        echo "<div class='user-info-item'>Welcome manager: ". $user['name'] . "</div>";
+        echo "<div class='user-logout'><a href='employee_logout.php'>Manager Logout</a></div>";
     }else if($user["role"] == "E"){
-        echo "Welcome employee: " . $user['name'];
-        echo "<br>";
-        echo "<a href='employee_logout.php'>Employee Logout</a>";
+        echo "<div class='user-info-item'>Welcome employee: " . $user['name'] . "</div>";
+        echo "<div class='user-logout'><a href='employee_logout.php'>Employee Logout</a></div>";
     }
+    echo "</div>";
 }
 ?>
 </body>
