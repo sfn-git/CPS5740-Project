@@ -6,7 +6,6 @@
     <title>Employee Table</title>
     <?php include 'libraries.php'?>
 </head>
-</html>
 <body>
 <?php 
 
@@ -21,15 +20,15 @@
         echo '<div class="header">
                 <div class="header-text">Employees Table</div>
               </div>
-              <br>';
-        echo '<table>';
-        echo '<tr class="table_header">';
-        echo '<th>Employee ID</th>';
-        echo '<th>Username</th>';
-        echo '<th>Password</th>';
-        echo '<th>Name</th>';
-        echo '<th>Role</th>';
-        echo '</tr>';
+              <br>
+              <table>
+                <tr class="table_header">
+                    <th>Employee ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                </tr>';
         while($row = mysqli_fetch_assoc($result)){
             echo '<tr>';
             echo '<td class="center-table-item">' . $row['employee_id'] . '</td>';
@@ -47,3 +46,4 @@
 
 ?>
 </body>
+</html>

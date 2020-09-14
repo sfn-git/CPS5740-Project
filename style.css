@@ -3,8 +3,9 @@ body{
     width: 100%;
     font-family: 'Open Sans', sans-serif;
 }
+
+/* Table page code */
 table {
-    /* border: 1px black solid; */
     margin: auto;
     width: 50%;
 }
