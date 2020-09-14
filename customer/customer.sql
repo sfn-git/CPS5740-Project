@@ -5,9 +5,9 @@ CREATE TABLE CUSTOMER(
     password VARCHAR(32) NOT NULL,
     first_name VARCHAR(32),
     last_name VARCHAR(32),
-    TEL VARCHAR(5),
+    TEL VARCHAR(16),
     address VARCHAR(32),
     city VARCHAR(32),
-    zipcode INT(5),
+    zipcode VARCHAR(5),
     state VARCHAR(32)
 );

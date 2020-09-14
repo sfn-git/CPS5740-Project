@@ -1,3 +1,9 @@
+<?php 
+    if(isset($_COOKIE["employee_id"])){
+        header("Location: employee_home.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

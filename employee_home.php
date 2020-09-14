@@ -9,37 +9,42 @@
 <body>
 <?php
 
-    // Grabs login information from frontend
-    @$username = $_POST["username"];
-    @$password = $_POST["password"];
+    if(isset($_COOKIE["employee_id"])){
+        continue_program($_COOKIE["employee_id"]);
+    }else{
 
-    // If empty, does not allow program to proceed
-    if($username == "" || $password == ""){
-        die("<div class='error-message'>Cannot login with empty username or password</div>");
-    }
+        include 'dbconfig.php';
+        $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
+        // Grabs login information from frontend
+        $username = mysqli_real_escape_string($conn, $_POST["username"]);
+        $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
-    include 'dbconfig.php';
-    $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
-
-    // Checks if username password combo is correct
-    $sql = "SELECT employee_id, login, password FROM CPS5740.EMPLOYEE WHERE login='$username'";
-    $result = mysqli_query($conn, $sql);
-
-    if(!(mysqli_num_rows($result) == 0)){
-        $row = mysqli_fetch_assoc($result);
-        if($row["password"] == $password){
-            $em_id = $row["employee_id"];
-            setcookie("employee_id", $em_id, time() + (86400*30), "/");
+        // If empty, does not allow program to proceed
+        if($username == "" || $password == ""){
             mysqli_close($conn);
-            continue_program($em_id);
+            die("<div class='error-message'>Cannot login with empty username or password</div>");
+        }
+
+        // Checks if username password combo is correct
+        $sql = "SELECT employee_id, login, password FROM CPS5740.EMPLOYEE WHERE login='$username'";
+        $result = mysqli_query($conn, $sql);
+
+        if(!(mysqli_num_rows($result) == 0)){
+            $row = mysqli_fetch_assoc($result);
+            if($row["password"] == $password){
+                $em_id = $row["employee_id"];
+                setcookie("employee_id", $em_id, time() + (86400*30), "/");
+                mysqli_close($conn);
+                continue_program($em_id);
+            }else{
+                mysqli_close($conn);
+                die("<div class='error-message'>Employee $username exist in the database, but the password does not match. Please<a href='employee_login.php'>try again.</a></div>");
+            }
         }else{
             mysqli_close($conn);
-            die("<div class='error-message'>Employee $username exist in the database, but the password does not match. Please<a href='employee_login.php'>try again.</a></div>");
+            die("<div class='error-message'>Login ID $username does not exist. Please <a href='employee_login.php'>try again</a></div>");
         }
-    }else{
-        mysqli_close($conn);
-        die("<div class='error-message'>Login ID $username does not exist . Please <a href='employee_login.php'>try again</a></div>");
-    }
+}
 
 function continue_program($id){
     
