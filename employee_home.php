@@ -26,7 +26,7 @@
         }
 
         // Checks if username password combo is correct
-        $sql = "SELECT employee_id, login, password FROM CPS5740.EMPLOYEE WHERE login='$username'";
+        $sql = "SELECT employee_id, login, password, role FROM CPS5740.EMPLOYEE WHERE login='$username'";
         $result = mysqli_query($conn, $sql);
 
         if(!(mysqli_num_rows($result) == 0)){
@@ -34,6 +34,12 @@
             if($row["password"] == $password){
                 $em_id = $row["employee_id"];
                 setcookie("employee_id", $em_id, time() + (86400*30), "/");
+                if($row['role'] == 'M'){
+                    setcookie("is_manager", 1, time() + (86400*30), "/");
+                }else{
+                    setcookie("is_manager", 0, time() + (86400*30), "/");
+                }
+               
                 mysqli_close($conn);
                 continue_program($em_id);
             }else{

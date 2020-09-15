@@ -21,7 +21,7 @@
                 <div class="header-text">Employees Table</div>
               </div>
               <br>
-              <table>
+              <table style="width: 40%;">
                 <tr class="table_header">
                     <th>Employee ID</th>
                     <th>Username</th>
@@ -35,7 +35,7 @@
             echo '<td>' . $row['login'] . '</td>';
             echo '<td>' . $row['password'] . '</td>';
             echo '<td>' . $row['name'] . '</td>';
-            echo '<td class="center-table-item">' . $row['role'] . '</td>';
+            echo '<td>' . $row['role'] . '</td>';
             echo '</tr>';
             
         }
