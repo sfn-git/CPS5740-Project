@@ -9,7 +9,7 @@
 <body>
 <?php
 
-    include 'dbconfig.php';
+    include('dbconfig.php');
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
 
     $user['username'] = mysqli_real_escape_string($conn, $_POST['username']);

@@ -13,7 +13,7 @@
         continue_program($_COOKIE["employee_id"]);
     }else{
 
-        include 'dbconfig.php';
+        include('dbconfig.php');
         $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
         // Grabs login information from frontend
         $username = mysqli_real_escape_string($conn, $_POST["username"]);
@@ -69,7 +69,7 @@ function continue_program($id){
         echo "<div class='user-info-item'>You are NOT from Kean University</div>";
     }
 
-    include 'dbconfig.php';
+    include('dbconfig.php');
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
     
     $sql = "SELECT * FROM CPS5740.EMPLOYEE WHERE employee_id=$id";

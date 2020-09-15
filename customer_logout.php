@@ -11,8 +11,7 @@
 
 <?php
 
-setcookie("employee_id", "", time() - (86400*30), "/");
-setcookie("is_manager", "", time() - (86400*30), "/");
+setcookie("customer_id", "", time() - (86400*30), "/");
 echo "<div class='message'>Successfully Logged out. <a href='phase1.php'>Click here</a> to go back home.</div>"
 
 ?>

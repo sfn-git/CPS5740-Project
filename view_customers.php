@@ -13,7 +13,7 @@
         die("<div class='error-message'>You must be logged in as an employee or manager</div>");
     }
 
-    include 'dbconfig.php';
+    include('dbconfig.php');
 
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
 
