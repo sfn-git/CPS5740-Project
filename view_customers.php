@@ -42,7 +42,7 @@
 
     while($row = mysqli_fetch_assoc($result)){
         echo '<tr>';
-        echo '<td class="center-table-item">' . $row['customer_id'] . '</td>';
+        echo '<td><div class="center-table-item">' . $row['customer_id'] . '</div></td>';
         echo '<td>' . $row['login_id'] . '</td>';
         echo '<td>' . $row['password'] . '</td>';
         echo '<td>' . $row['last_name'] . '</td>';

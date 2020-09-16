@@ -87,6 +87,7 @@ function continue_program($id){
         echo "<div class='user-info-item'>Welcome employee: " . $user['name'] . "</div>";
         echo "<div class='user-logout'><a href='employee_logout.php'>Employee Logout</a></div>";
     }
+    echo "<div class='user-link'><a href='phase1.php'>Project Home</a></div>";
     echo "</div>";
 }
 ?>

@@ -31,7 +31,7 @@
                 </tr>';
         while($row = mysqli_fetch_assoc($result)){
             echo '<tr>';
-            echo '<td class="center-table-item">' . $row['employee_id'] . '</td>';
+            echo '<td><div class="center-table-item">' . $row['employee_id'] . '</div></td>';
             echo '<td>' . $row['login'] . '</td>';
             echo '<td>' . $row['password'] . '</td>';
             echo '<td>' . $row['name'] . '</td>';

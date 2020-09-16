@@ -48,9 +48,9 @@
     $sql = "INSERT INTO 2020F_nadeems.CUSTOMER (login_id, password, first_name, last_name, TEL, address, city, zipcode, state) VALUES ( '" . $user['username'] . "','" . $user['password'] . "','" . $user['firstName'] . "','" . $user['lastName'] . "','" . $user['telephone'] . "','" . $user['address'] . "','" . $user['city'] . "','" . $user['zipcode'] . "','" . $user['state'] . "')";
 
     if(mysqli_query($conn, $sql)){
-        echo "<div class='success-message'>Successfully Signed up!</div>";
+        echo "<div class='success-message'>Successfully Signed up! <a href='customer_login.php'>Click here</a> to login.</div>";
     }else{
-        echo "<div class='error-message'>Something went wrong :( </div>";
+        echo "<div class='error-message'>Something went wrong :(. <a href='customer_signup.php>Click here</a> to try again.</div>";
     }
 
     mysqli_close($conn);

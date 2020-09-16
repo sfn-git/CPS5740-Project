@@ -94,6 +94,8 @@ th{
 }
 
 .input-submit input[type="submit"]:hover{
+    display: flex;
+    justify-content: center;
     color: white;
     background-color: darkgreen;
 }
@@ -118,6 +120,11 @@ th{
     display: flex;
     justify-content: center;
     color: green;
+}
+
+.success-message a {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .error-message{
@@ -173,6 +180,32 @@ th{
     font-weight: bolder;
 }
 
+.user-link{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    background-color: lightblue;
+    border: 1px black solid;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.user-link:hover{
+    background-color: green;
+    font-weight: bolder;
+}
+
 .user-logout a{
     color: white;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.center-link{
+    display: flex;
+    justify-content: center;
 }
