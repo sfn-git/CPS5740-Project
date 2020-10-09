@@ -81,10 +81,10 @@ function continue_program($id){
     mysqli_close($conn);
 
     if($user["role"] == "M"){
-        echo "<div class='user-info-item'>Welcome manager: ". $user['name'] . "</div>";
+        echo "<div class='user-info-item'>Welcome Manager: ". $user['name'] . "</div>";
         echo "<div class='user-logout'><a href='employee_logout.php'>Manager Logout</a></div>";
     }else if($user["role"] == "E"){
-        echo "<div class='user-info-item'>Welcome employee: " . $user['name'] . "</div>";
+        echo "<div class='user-info-item'>Welcome Employee: " . $user['name'] . "</div>";
         echo "<div class='user-logout'><a href='employee_logout.php'>Employee Logout</a></div>";
     }
     echo "<div class='user-link'><a href='phase1.php'>Project Home</a></div>";

@@ -27,7 +27,7 @@
     <div class='header'>
         <div class='header-text'> $name's Information</div>
     </div>
-    <div class='center-link'><a href='customer_logout.php'>Customer logout</a></div>
+    <div class='user-link center-link logout'><a href='customer_logout.php'>Customer logout</a></div>
     <br>
     <table style='width: 65%;'>
         <tr style='background: gray;'>
@@ -102,7 +102,7 @@
     // Form for updating
     echo "<form action='customer_update_action.php' method='POST'>";
     echo '<tr>';
-    echo '<td class="center-table-item">' . $row['customer_id'] . '</td>';
+    echo '<td><div class="center-table-item">' . $row['customer_id'] . '</div></td>';
     echo '<td>' . $row['login_id'] . '</td>';
     echo '<td><input type="password" value="' . $row['password'] . '" name="password"></td>';
     echo '<td><input type="text" value="' . $row['last_name'] . '" name="last_name"></td>';
@@ -129,8 +129,8 @@
     echo "<div class='submit'><input type='submit' value='Update Information'></div>";
     echo "</form>";
 
-    echo "<div class='center-link' style='margin-top: 10px;'><a href='customer_home.php'>Customer Home</a></div>";
-    echo "<div class='center-link'><a href='phase1.php'>Project Home</a></div>";
+    echo "<div class='user-link center-link' style='margin-top: 10px;'><a href='customer_home.php'>Customer Home</a></div>";
+    echo "<div class='user-link center-link' style='margin-top: 10px;'><a href='phase1.php'>Project Home</a></div>";
 
     mysqli_close($conn);
 ?>

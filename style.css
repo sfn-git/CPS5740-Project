@@ -206,6 +206,11 @@ th{
 }
 
 .center-link{
-    display: flex;
-    justify-content: center;
+    margin: auto;
+    width: 10%;
+}
+
+.logout:hover{
+    background-color: red;
+    font-weight: bolder;
 }
