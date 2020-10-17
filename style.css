@@ -1,0 +1,216 @@
+body{
+    height: 100%;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Table page code */
+
+table {
+    /* Width should be defined inline */
+    margin: auto;
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: 1px black solid;
+    border-right: 1px black solid;
+    border-left: 1px black solid;
+}
+
+th{
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+    border-right: 1px black solid;
+    border-left: 1px black solid;
+}
+
+.center-table-item{
+    display: flex;
+    justify-content: center;
+}
+
+/* Main Page Styling */
+.list-links{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-links-item{
+    display: flex;
+    justify-content: center;
+    width: 20%;
+    margin-bottom: 10px;
+    font-size: x-large;
+    border: 1px black solid;
+    border-radius:  5px;
+    background-color: #0e9ab0;
+}
+
+.list-links-item a{
+    color: white;
+}
+
+.list-links-item:hover{
+    background-color: green;
+}
+
+/* Form Input Styling */
+.input-form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-item{
+    width: 20%;
+    font-size: large;
+    font-weight: bold;
+}
+
+.input-item input{
+    width: 100%;
+    height: 25px;
+}
+
+.input-item select{
+    width: 100%;
+    height: 25px;
+}
+
+.input-submit input[type="submit"]{
+    display: block;
+    width: 100%;
+    background-color: darkgray;
+    border: none;
+    color: black;
+    padding: 8px 24px;
+    font-weight: bold;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.input-submit input[type="submit"]:hover{
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: darkgreen;
+}
+
+/* Reuseable Styles */
+.header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header .header-text{
+    font-size: xx-large;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.success-message{
+    font-size: xx-large;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    color: green;
+}
+
+.success-message a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.error-message{
+    font-size: xx-large;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    color: red;
+}
+
+.error-message a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.message{
+    font-size: xx-large;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+.message a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.user-info{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+    border: 1px black solid;
+    margin: auto;
+    font-size: larger;
+
+}
+
+.user-logout{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    background-color: gray;
+    border: 1px black solid;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.user-logout:hover{
+    background-color: red;
+    font-weight: bolder;
+}
+
+.user-link{
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    background-color: lightblue;
+    border: 1px black solid;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.user-link:hover{
+    background-color: green;
+    font-weight: bolder;
+}
+
+.user-logout a{
+    color: white;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.center-link{
+    margin: auto;
+    width: 10%;
+}
+
+.logout:hover{
+    background-color: red;
+    font-weight: bolder;
+}
