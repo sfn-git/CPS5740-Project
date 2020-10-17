@@ -76,7 +76,7 @@ function continue_program($id){
 
         echo "<div class='user-logout'><a href='customer_logout.php'>Customer Logout</a></div>";
         echo "<div class='user-link'><a href='customer_update.php'>Update my data</a></div>";
-        echo "<div class='user-link' style='margin-top: 15px;'><a href='phase1.php'>Project home</a></div><br>";
+        echo "<div class='user-link' style='margin-top: 15px;'><a href='index.php'>Project home</a></div><br>";
         
     
     echo "</div>";
