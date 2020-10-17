@@ -57,17 +57,6 @@ function continue_program($id){
     $user;
 
     echo "<div class='user-info'>";
-    // Displays User's IP
-    $ip = $_SERVER['REMOTE_ADDR'];
-    echo "<div class='user-info-item'>Your IP: $ip</div>";
-
-    // Checks if from kean
-    $ip_breakdown = explode(".", $ip);
-    if(($ip_breakdown[0] == 131 && $ip_breakdown[1] == 125) || $ip_breakdown[0] == 10){
-        echo "<div class='user-info-item'>You are from Kean University</div>";
-    }else{
-        echo "<div class='user-info-item'>You are NOT from Kean University</div>";
-    }
 
     include('dbconfig.php');
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
@@ -82,11 +71,15 @@ function continue_program($id){
 
     if($user["role"] == "M"){
         echo "<div class='user-info-item'>Welcome Manager: ". $user['name'] . "</div>";
-        echo "<div class='user-logout'><a href='employee_logout.php'>Manager Logout</a></div>";
+        echo "<div class='user-logout margin-top'><a href='employee_logout.php'>Manager Logout</a></div>";
     }else if($user["role"] == "E"){
         echo "<div class='user-info-item'>Welcome Employee: " . $user['name'] . "</div>";
-        echo "<div class='user-logout'><a href='employee_logout.php'>Employee Logout</a></div>";
+        echo "<div class='user-logout margin-top'><a href='employee_logout.php'>Employee Logout</a></div>";
     }
+
+    echo "<div class='user-link margin-top'><a href='#'>Add Product</a></div>";
+    echo "<div class='user-link'><a href='#'>Search and Update Product</a></div>";
+    echo "<div class='user-link margin-bottom'><a href='#'>View Vendors</a></div>";
     echo "<div class='user-link'><a href='phase2.php'>Project Home</a></div>";
     echo "</div>";
 }

@@ -17,6 +17,7 @@
         <div class="list-links-item"><a href="customer_signup.php">Customer Sign Up</a></div>
         <div class="list-links-item"><a href="view_customers.php">View All Customers</a></div>
         <div class="list-links-item"><a href="customer_login.php">Customer Login</a></div>
+        <div class="list-links-item"><a href="search.php">Search for an Item</a></div>
     </div>
 </body>
 </html>

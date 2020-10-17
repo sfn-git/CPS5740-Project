@@ -100,6 +100,13 @@ th{
     background-color: darkgreen;
 }
 
+.search{
+    display: flex;
+    width: 30%;
+    margin: auto;
+    margin-top: 15px;
+}
+
 /* Reuseable Styles */
 .header{
     display: flex;
@@ -183,7 +190,7 @@ th{
 .user-link{
     display: flex;
     justify-content: center;
-    width: 40%;
+    width: 60%;
     background-color: lightblue;
     border: 1px black solid;
     margin-bottom: 5px;
@@ -213,4 +220,12 @@ th{
 .logout:hover{
     background-color: red;
     font-weight: bolder;
+}
+
+.margin-top{
+    margin-top: 10px;
+}
+
+.margin-bottom{
+    margin-bottom: 15px;
 }
