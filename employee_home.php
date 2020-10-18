@@ -78,7 +78,7 @@ function continue_program($id){
     }
 
     echo "<div class='user-link margin-top'><a href='employee_add_product.php'>Add Product</a></div>";
-    echo "<div class='user-link'><a href='#'>Search and Update Product</a></div>";
+    echo "<div class='user-link'><a href='employee_search_update.php'>Search and Update Product</a></div>";
     echo "<div class='user-link margin-bottom'><a href='#'>View Vendors</a></div>";
     echo "<div class='user-link'><a href='phase2.php'>Project Home</a></div>";
     echo "</div>";

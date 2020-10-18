@@ -229,3 +229,20 @@ th{
 .margin-bottom{
     margin-bottom: 15px;
 }
+
+#edit:hover{
+    background-color: orange;
+    font-weight: bolder;
+}
+
+#edit{
+    display: none;
+}
+
+#save{
+    display: none;
+}
+
+#cancel{
+    display: none;
+}
