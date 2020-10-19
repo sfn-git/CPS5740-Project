@@ -84,16 +84,17 @@
             </tr>`;
             
             for(var i in searchResult){
+                var productID = searchResult[i].product_id;
                 insert += `
                 <tr>
-                    <td>${searchResult[i].product_id}</td>
-                    <td><input type="text" name="update[${i}][product_name]" id="update[${i}][product_name]" value="${searchResult[i].name}"></td>
-                    <td><input type="text" name="update[${i}][description]" id="update[${i}][description]" value="${searchResult[i].description}"></td>
-                    <td><input type="number" step=.01 min=0 name="update[${i}][cost]" id="update[${i}][cost]" value="${searchResult[i].cost}"></td>
-                    <td><input type="number" step=.01 min=0 name="update[${i}][sell_price]" id="update[${i}][sell_price]" value="${searchResult[i].sell_price}"></td>
-                    <td><input type="number" min=0 name="update[${i}][quantity]" id="update[${i}][quantity]" value="${searchResult[i].quantity}"></td>
+                    <td>${searchResult[i].product_id}<input type="hidden" name="update[${i}][product_id]" value="${productID}"></td>
+                    <td><input type="text" name="update[${i}][product_name]" id="update[${i}][product_name]" value="${searchResult[i].name}" required></td>
+                    <td><input type="text" name="update[${i}][description]" id="update[${i}][description]" value="${searchResult[i].description}" required></td>
+                    <td><input type="number" step=.01 min=0 name="update[${i}][cost]" id="update[${i}][cost]" value="${searchResult[i].cost}" required></td>
+                    <td><input type="number" step=.01 min=0 name="update[${i}][sell_price]" id="update[${i}][sell_price]" value="${searchResult[i].sell_price}" required></td>
+                    <td><input type="number" min=0 name="update[${i}][quantity]" id="update[${i}][quantity]" value="${searchResult[i].quantity}" required></td>
                     <td>
-                        <select name="update[${i}][vendor]" id="update[${i}][vendor]">
+                        <select name="update[${i}][vendor]" id="update[${i}][vendor]" required>
                             <?php 
                                 include("dbconfig.php");
                                 $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
@@ -129,7 +130,9 @@
         }
 
         function submitForm(){
-            document.getElementById("updateForm").submit();
+            if(window.confirm("Are you sure you would like to make these update?")){
+                document.getElementById("updateForm").submit();
+            }
         }
     </script>
     
@@ -149,21 +152,25 @@
     <div class='user-link center-link' style='margin-top: 10px;'>
         <a href='phase2.php'>Project Home</a>
     </div>
+    <div class='user-link center-link' style='margin-top: 10px;'>
+        <a href='employee_home.php'>Employee Home</a>
+    </div>
     
 
     <input type="text" id="searchBar" onkeyup="search()" placeholder="Search for an item..." class="input-item search" style="margin-bottom: 20px;">
     <div id="edit" onclick="editProducts()" class='user-link center-link edit' style='text-align: center; margin-bottom: 10px;'>
         <a href='#'>Edit Products</a>
     </div>
-    <div id="cancel" onclick="cancelEdit()" class='user-link center-link' style='text-align: center; margin-bottom: 10px;'>
-        <a href='#'>Cancel Edit</a>
-    </div>
     <div id="table_div"></div>
-        <form action="employee_update_product.php" id="updateForm" method="POST">
-            <table id="edit_table" style="width: 95vw; display: none;"></table>
-        </form>
-    <div id="save" onclick="submitForm()" class='user-link center-link' style='text-align: center; margin-top: 10px;'>
+    <div id="cancel" onclick="cancelEdit()" class='user-link center-link' style='text-align: center; margin-top: 10px;'>
+        <a href='#'>Cancel Edits</a>
+    </div>
+    <div id="save" onclick="submitForm()" class='user-link center-link' style='text-align: center; margin-bottom: 10px; margin-top: 10px;'>
         <a href='#'>Save Edits</a>
     </div>
+    <form action="employee_update_product.php" id="updateForm" method="POST">
+        <table id="edit_table" style="width: 95vw; display: none;"></table>
+    </form>
+    
 </body>
 </html>
