@@ -9,6 +9,7 @@
     <script src="./lib/jquery.min.js"></script>
     <script>
         var searchResult;
+        var vendors;
 
         function search(){
             var search = $('#searchBar').val();
@@ -81,22 +82,41 @@
                 <th>Vendor Name</th>
                 <th>Last Updated By</th>
             </tr>`;
-
+            
             for(var i in searchResult){
                 insert += `
                 <tr>
                     <td>${searchResult[i].product_id}</td>
-                    <td>${searchResult[i].name}</td>
-                    <td>${searchResult[i].description}</td>
-                    <td>${searchResult[i].cost}</td>
-                    <td>${searchResult[i].sell_price}</td>
-                    <td>${searchResult[i].quantity}</td>
-                    <td>${searchResult[i].vName}</td>
+                    <td><input type="text" name="update[${i}][product_name]" id="update[${i}][product_name]" value="${searchResult[i].name}"></td>
+                    <td><input type="text" name="update[${i}][description]" id="update[${i}][description]" value="${searchResult[i].description}"></td>
+                    <td><input type="number" step=.01 min=0 name="update[${i}][cost]" id="update[${i}][cost]" value="${searchResult[i].cost}"></td>
+                    <td><input type="number" step=.01 min=0 name="update[${i}][sell_price]" id="update[${i}][sell_price]" value="${searchResult[i].sell_price}"></td>
+                    <td><input type="number" min=0 name="update[${i}][quantity]" id="update[${i}][quantity]" value="${searchResult[i].quantity}"></td>
+                    <td>
+                        <select name="update[${i}][vendor]" id="update[${i}][vendor]">
+                            <?php 
+                                include("dbconfig.php");
+                                $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
+
+                                $sql = "SELECT vendor_id, name FROM CPS5740.VENDOR";
+                                $result = mysqli_query($conn, $sql);
+
+                                while($row = mysqli_fetch_assoc($result)){
+                                    echo "<option value=\"".$row['vendor_id'] . "\">" .$row['name'] . "</option>";
+                                }
+                                mysqli_close($conn);
+                            ?>
+                        </select>
+                    </td>
                     <td>${searchResult[i].eName}</td>
                 </tr>`;
             };
 
             $("#edit_table").append(insert);
+
+            for(var i in searchResult){
+                document.getElementById(`update[${i}][vendor]`).value = searchResult[i].vendor_id;
+            }
         }
 
         function cancelEdit(){
@@ -107,6 +127,10 @@
             $("#edit").show();
             $("#edit_table").html("");
         }
+
+        function submitForm(){
+            document.getElementById("updateForm").submit();
+        }
     </script>
     
 </head>
@@ -116,15 +140,16 @@
             die("<div class='error-message'>You must be logged in as an employee or manager</div>");
         }
     ?>
+    <div class='user-link center-link logout' style='margin-top: 10px;'>
+        <a href='employee_logout.php'>Employee Logout</a>
+    </div>
     <div class="header">
         <div class="header-text">Search for an item to view or update it</div>
     </div>
     <div class='user-link center-link' style='margin-top: 10px;'>
         <a href='phase2.php'>Project Home</a>
     </div>
-    <div class='user-link center-link logout' style='margin-top: 10px;'>
-        <a href='employee_logout.php'>Employee Logout</a>
-    </div>
+    
 
     <input type="text" id="searchBar" onkeyup="search()" placeholder="Search for an item..." class="input-item search" style="margin-bottom: 20px;">
     <div id="edit" onclick="editProducts()" class='user-link center-link edit' style='text-align: center; margin-bottom: 10px;'>
@@ -134,8 +159,10 @@
         <a href='#'>Cancel Edit</a>
     </div>
     <div id="table_div"></div>
-    <table id="edit_table" style="width: 95vw; display: none;"></table>
-    <div id="save" class='user-link center-link' style='text-align: center; margin-top: 10px;'>
+        <form action="employee_update_product.php" id="updateForm" method="POST">
+            <table id="edit_table" style="width: 95vw; display: none;"></table>
+        </form>
+    <div id="save" onclick="submitForm()" class='user-link center-link' style='text-align: center; margin-top: 10px;'>
         <a href='#'>Save Edits</a>
     </div>
 </body>
