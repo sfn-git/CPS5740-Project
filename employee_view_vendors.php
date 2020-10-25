@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Vendors</title>
     <?php include 'libraries.php'?>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
     <div class='user-link center-link' style='margin-top: 10px;'>
@@ -63,5 +65,41 @@
         mysqli_close($conn);
     ?>
     <div id="table_div"></div>
+
+    <div id='map' style='width: 50%; height: 50vh; margin: auto;'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2ZuLWRldiIsImEiOiJjazlwMXMyMnIwNmo3M3ZxcXM5aG11d282In0.UOThEgjC-klYGjZccvr44w';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-98.57, 40],
+            zoom: 3
+        });
+        <?php
+        if(!isset($_COOKIE["employee_id"])){
+            die("<div class='error-message'>You must be logged in as an employee or manager</div>");
+        }
+        include('dbconfig.php');
+
+        $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
+
+        $sql = "SELECT vendor_id, latitude, Longitude, name FROM CPS5740.VENDOR;";
+        $result = mysqli_query($conn, $sql);
+
+        $locations = array();
+        while($row = mysqli_fetch_assoc($result)){
+
+            $lat = $row['latitude'];
+            $long = $row['Longitude'];
+            $name = $row['name'];
+            $id = $row['vendor_id'];
+            echo "new mapboxgl.Marker().setLngLat([$long, $lat]).setPopup(new mapboxgl.Popup().setText('$id').setHTML('<p>ID: $id</p><p>Vendor: $name</p>')).addTo(map);";
+
+        }
+
+        mysqli_close($conn);
+    ?>
+        
+    </script>
 </body>
 </html>

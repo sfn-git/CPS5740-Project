@@ -254,3 +254,16 @@ th{
 .error{
     color: red;
 }
+
+.report-input-row{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.report-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+}

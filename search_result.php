@@ -2,7 +2,7 @@
     include("dbconfig.php");
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
 
-    $search = $_POST["value"];
+    $search = mysqli_real_escape_string($conn,$_POST["value"]);
     $sql;
     $execute = true;
 

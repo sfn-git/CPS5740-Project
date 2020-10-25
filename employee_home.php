@@ -82,6 +82,36 @@ function continue_program($id){
     echo "<div class='user-link margin-bottom'><a href='employee_view_vendors.php'>View Vendors</a></div>";
     echo "<div class='user-link'><a href='phase2.php'>Project Home</a></div>";
     echo "</div>";
+
+    if($_COOKIE["is_manager"] == 1){
+
+        echo "<div class='header'>";
+        echo "<div class='header-text'>View Reports</div>";
+        echo "</div>";
+        echo "<div class='report-input-row'>";
+        echo "<div class='report-row'>";
+        echo "<label for='time-period'>Time Period: &nbsp;</label>";
+        echo "<select name='time-period'>";
+        echo "<option value='all-time'>All</option>";
+        echo "<option value='past-week'>Past Week</option>";
+        echo "<option value='current-month'>Current Month</option>";
+        echo "<option value='past-month'>Past Month</option>";
+        echo "<option value='past-year'>Past Year</option>";
+        echo "</select>";
+        echo "</div>";
+        echo "<div class='report-row'>";
+        echo "<label for='time-period'>Type: &nbsp;</label>";
+        echo "<select name='report-type'>";
+        echo "<option value='all-type'>All Sales</option>";
+        echo "<option value='products'>Products</option>";
+        echo "<option value='vendors'>Vendors</option>";
+        echo "</select>";
+        echo "</div>";
+        echo "<div class='input-submit' style='width: 200px; margin: auto;'>";
+        echo "<input type='submit' onclick='viewReport();' value='View Report'>";
+        echo "</div>";
+        echo "</div>";
+    }
 }
 ?>
 </body>
