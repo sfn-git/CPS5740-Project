@@ -31,11 +31,11 @@
     $execute = true;
 
     if($search == "*"){
-        $sql = "SELECT p.product_id, p.name, p.description, p.sell_price, p.quantity, p.vendor_id, v.name AS vName FROM 2020F_nadeems.PRODUCT AS p, CPS5740.VENDOR AS v WHERE p.vendor_id = v.vendor_id";
+        $sql = "SELECT p.product_id, p.name, p.description, p.sell_price, p.quantity, p.vendor_id, v.name AS vName FROM 2020F_nadeems.PRODUCT AS p, CPS5740.VENDOR AS v WHERE p.vendor_id = v.vendor_id HAVING p.quantity > 0";
     }else if($search == ""){
         $execute = false;
     }else{
-        $sql = "SELECT p.product_id, p.name, p.description, p.sell_price, p.quantity, p.vendor_id, v.name AS vName FROM 2020F_nadeems.PRODUCT AS p, CPS5740.VENDOR AS v WHERE p.vendor_id = v.vendor_id AND (p.name LIKE '%$search%' or p.description LIKE '%$search%')";
+        $sql = "SELECT p.product_id, p.name, p.description, p.sell_price, p.quantity, p.vendor_id, v.name AS vName FROM 2020F_nadeems.PRODUCT AS p, CPS5740.VENDOR AS v WHERE p.vendor_id = v.vendor_id AND (p.name LIKE '%$search%' or p.description LIKE '%$search%') HAVING p.quantity > 0";
     }
 
     if($execute){
