@@ -272,10 +272,18 @@ th{
     text-align: center;
 }
 
-/* .search-form{
-    width: 75%;
-    align-items: center;
+.advert{
+    width: fit-content;
     display: flex;
-    flex-direction: row;
-    margin: auto
-}; */
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px
+}
+
+.advert .image img{
+    width: 250px;
+    height: 250px;
+}
+

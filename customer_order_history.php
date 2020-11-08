@@ -32,11 +32,11 @@
         $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
         $custID = $_COOKIE["customer_id"];
 
-        $sql = "SELECT * from 2020F_nadeems.`ORDER` WHERE customer_id=$custID";
+        $sql = "SELECT * from 2020F_nadeems.`ORDER` WHERE customer_id=$custID ORDER BY date desc";
         $result = mysqli_query($conn, $sql);
         $grand_total = 0;
         while($row = mysqli_fetch_assoc($result)){
-            echo "<table>";
+            echo "<table style='width: 60%;'>";
                 echo "<tr class='table_header'>";
                     echo "<th>Order ID</th>";
                     echo "<th>Product Name</th>";

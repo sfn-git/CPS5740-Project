@@ -27,6 +27,7 @@
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("<div class='error-message'>Unable to connect to database. Try again later</div>");
 
     $search = mysqli_real_escape_string($conn,$_GET["search"]);
+    setcookie("advert", $search, time() + (86400 * 30), "/");
     $sql;
     $execute = true;
 

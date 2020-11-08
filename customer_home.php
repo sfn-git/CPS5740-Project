@@ -91,5 +91,6 @@ function continue_program($id){
             <input type="submit" style="width: 25vw; margin: auto;" value="Search!" >
         </div>
     </form>
+    <?php include 'customer_advert.php'?>
 </body>
 </html>
