@@ -35,10 +35,10 @@
 
     echo "<div class='advert'>";
             echo "<div class='image'>";
-                echo "<img src='customer_get_ad_img.php?id=$id' width=250 height=250>";
+                echo "<a href='$link'><img src='customer_get_ad_img.php?id=$id' width=250 height=250></a>";
             echo "</div>";
             echo "<div>";
-                echo "$description";
+                echo "AD: $description";
             echo "</div>";
             
         echo "</div>";

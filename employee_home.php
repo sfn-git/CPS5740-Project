@@ -83,12 +83,22 @@ function continue_program($id){
     echo "<div class='user-link'><a href='phase2.php'>Project Home</a></div>";
     echo "</div>";
 
-    if($_COOKIE["is_manager"] == 1){
+    if(@$_COOKIE["is_manager"] == 1){
 
         echo "<div class='header'>";
         echo "<div class='header-text'>View Reports</div>";
         echo "</div>";
         echo "<div class='report-input-row'>";
+       
+        echo "<form action='manager_view_reports.php' method='GET'>";
+        echo "<div class='report-row'>";
+        echo "<label for='time-period'>Type: &nbsp;</label>";
+        echo "<select name='report-type'>";
+        echo "<option value='all'>All Sales</option>";
+        echo "<option value='products'>Products</option>";
+        echo "<option value='vendors'>Vendors</option>";
+        echo "</select>";
+        echo "</div>";
         echo "<div class='report-row'>";
         echo "<label for='time-period'>Time Period: &nbsp;</label>";
         echo "<select name='time-period'>";
@@ -99,17 +109,11 @@ function continue_program($id){
         echo "<option value='past-year'>Past Year</option>";
         echo "</select>";
         echo "</div>";
-        echo "<div class='report-row'>";
-        echo "<label for='time-period'>Type: &nbsp;</label>";
-        echo "<select name='report-type'>";
-        echo "<option value='all-type'>All Sales</option>";
-        echo "<option value='products'>Products</option>";
-        echo "<option value='vendors'>Vendors</option>";
-        echo "</select>";
-        echo "</div>";
+        
         echo "<div class='input-submit' style='width: 200px; margin: auto;'>";
-        echo "<input type='submit' onclick='viewReport();' value='View Report'>";
+        echo "<input type='submit' value='View Report'>";
         echo "</div>";
+        echo "</form>";
         echo "</div>";
     }
 
