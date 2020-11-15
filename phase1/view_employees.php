@@ -13,7 +13,7 @@
 
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
 
-    $sql = "SELECT * FROM CPS5740.EMPLOYEE2";
+    $sql = "SELECT * FROM CPS5740.EMPLOYEE";
     $result = mysqli_query($conn, $sql);
     
     if($result){
@@ -21,7 +21,7 @@
                 <div class="header-text">Employees Table</div>
               </div>
               <br>
-              <table style="width: 60vw;">
+              <table style="width: 40%;">
                 <tr class="table_header">
                     <th>Employee ID</th>
                     <th>Username</th>

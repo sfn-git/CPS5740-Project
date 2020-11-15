@@ -12,7 +12,7 @@
 <?php
 
 setcookie("customer_id", "", time() - (86400*30), "/");
-echo "<div class='message'>Successfully Logged out. <a href='phase2.php'>Click here</a> to go back home.</div>"
+echo "<div class='message'>Successfully Logged out. <a href='index.php'>Click here</a> to go back home.</div>"
 
 ?>
 </body>

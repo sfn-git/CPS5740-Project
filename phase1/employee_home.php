@@ -26,12 +26,12 @@
         }
 
         // Checks if username password combo is correct
-        $sql = "SELECT employee_id, login, password, role FROM CPS5740.EMPLOYEE2 WHERE login='$username'";
+        $sql = "SELECT employee_id, login, password, role FROM CPS5740.EMPLOYEE WHERE login='$username'";
         $result = mysqli_query($conn, $sql);
 
         if(!(mysqli_num_rows($result) == 0)){
             $row = mysqli_fetch_assoc($result);
-            if($row["password"] == hash("sha256", $password)){
+            if($row["password"] == $password){
                 $em_id = $row["employee_id"];
                 setcookie("employee_id", $em_id, time() + (86400*30), "/");
                 if($row['role'] == 'M'){
@@ -57,11 +57,22 @@ function continue_program($id){
     $user;
 
     echo "<div class='user-info'>";
+    // Displays User's IP
+    $ip = $_SERVER['REMOTE_ADDR'];
+    echo "<div class='user-info-item'>Your IP: $ip</div>";
+
+    // Checks if from kean
+    $ip_breakdown = explode(".", $ip);
+    if(($ip_breakdown[0] == 131 && $ip_breakdown[1] == 125) || $ip_breakdown[0] == 10){
+        echo "<div class='user-info-item'>You are from Kean University</div>";
+    }else{
+        echo "<div class='user-info-item'>You are NOT from Kean University</div>";
+    }
 
     include('dbconfig.php');
     $conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name) or die("Unable to connect to database. Try again later");
     
-    $sql = "SELECT * FROM CPS5740.EMPLOYEE2 WHERE employee_id=$id";
+    $sql = "SELECT * FROM CPS5740.EMPLOYEE WHERE employee_id=$id";
     $result = mysqli_query($conn, $sql);
 
     if($result){
@@ -71,52 +82,13 @@ function continue_program($id){
 
     if($user["role"] == "M"){
         echo "<div class='user-info-item'>Welcome Manager: ". $user['name'] . "</div>";
-        echo "<div class='user-logout margin-top'><a href='employee_logout.php'>Manager Logout</a></div>";
+        echo "<div class='user-logout'><a href='employee_logout.php'>Manager Logout</a></div>";
     }else if($user["role"] == "E"){
         echo "<div class='user-info-item'>Welcome Employee: " . $user['name'] . "</div>";
-        echo "<div class='user-logout margin-top'><a href='employee_logout.php'>Employee Logout</a></div>";
+        echo "<div class='user-logout'><a href='employee_logout.php'>Employee Logout</a></div>";
     }
-
-    echo "<div class='user-link margin-top'><a href='employee_add_product.php'>Add Product</a></div>";
-    echo "<div class='user-link'><a href='employee_search_update.php'>Search and Update Product</a></div>";
-    echo "<div class='user-link margin-bottom'><a href='employee_view_vendors.php'>View Vendors</a></div>";
-    echo "<div class='user-link'><a href='phase2.php'>Project Home</a></div>";
+    echo "<div class='user-link'><a href='index.php'>Project Home</a></div>";
     echo "</div>";
-
-    if(@$_COOKIE["is_manager"] == 1){
-
-        echo "<div class='header'>";
-        echo "<div class='header-text'>View Reports</div>";
-        echo "</div>";
-        echo "<div class='report-input-row'>";
-       
-        echo "<form action='manager_view_reports.php' method='GET'>";
-        echo "<div class='report-row'>";
-        echo "<label for='time-period'>Type: &nbsp;</label>";
-        echo "<select name='report-type'>";
-        echo "<option value='all'>All Sales</option>";
-        echo "<option value='products'>Products</option>";
-        echo "<option value='vendors'>Vendors</option>";
-        echo "</select>";
-        echo "</div>";
-        echo "<div class='report-row'>";
-        echo "<label for='time-period'>Time Period: &nbsp;</label>";
-        echo "<select name='time-period'>";
-        echo "<option value='all-time'>All</option>";
-        echo "<option value='past-week'>Past Week</option>";
-        echo "<option value='current-month'>Current Month</option>";
-        echo "<option value='past-month'>Past Month</option>";
-        echo "<option value='past-year'>Past Year</option>";
-        echo "</select>";
-        echo "</div>";
-        
-        echo "<div class='input-submit' style='width: 200px; margin: auto;'>";
-        echo "<input type='submit' value='View Report'>";
-        echo "</div>";
-        echo "</form>";
-        echo "</div>";
-    }
-
 }
 ?>
 </body>

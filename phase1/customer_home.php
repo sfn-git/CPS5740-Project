@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Home</title>
     <?php include 'libraries.php'?>
-    <script src="./lib/jquery.min.js"></script>
 </head>
 <body>
 <?php
@@ -77,20 +76,12 @@ function continue_program($id){
 
         echo "<div class='user-logout'><a href='customer_logout.php'>Customer Logout</a></div>";
         echo "<div class='user-link'><a href='customer_update.php'>Update my data</a></div>";
-        echo "<div class='user-link'><a href='customer_order_history.php'>View my Order History</a></div>";
-        echo "<div class='user-link' style='margin-top: 15px;'><a href='phase2.php'>Project home</a></div><br>";
+        echo "<div class='user-link' style='margin-top: 15px;'><a href='index.php'>Project home</a></div><br>";
         
     
     echo "</div>";
     }
 }
 ?>
-    <form action="customer_search_result.php" method="GET">
-        <input type="text" name="search" id="searchBar" onkeyup="search()" placeholder="Search for an product..." class="input-item search" style="margin-bottom: 20px;" required="true">
-        <div class="input-submit">
-            <input type="submit" style="width: 25vw; margin: auto;" value="Search!" >
-        </div>
-    </form>
-    <?php include 'customer_advert.php'?>
 </body>
 </html>

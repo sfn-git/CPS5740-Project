@@ -1,0 +1,6 @@
+CREATE TABLE `ORDER`(
+    order_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    customer_id INT NOT NULL,
+    date DATETIME NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES 2020F_nadeems.CUSTOMER(customer_id)
+);

@@ -100,13 +100,6 @@ th{
     background-color: darkgreen;
 }
 
-.search{
-    display: flex;
-    width: 30%;
-    margin: auto;
-    margin-top: 15px;
-}
-
 /* Reuseable Styles */
 .header{
     display: flex;
@@ -190,7 +183,7 @@ th{
 .user-link{
     display: flex;
     justify-content: center;
-    width: 60%;
+    width: 40%;
     background-color: lightblue;
     border: 1px black solid;
     margin-bottom: 5px;
@@ -221,69 +214,3 @@ th{
     background-color: red;
     font-weight: bolder;
 }
-
-.margin-top{
-    margin-top: 10px;
-}
-
-.margin-bottom{
-    margin-bottom: 15px;
-}
-
-#edit:hover{
-    background-color: orange;
-    font-weight: bolder;
-}
-
-#edit{
-    display: none;
-}
-
-#save{
-    display: none;
-}
-
-#cancel{
-    display: none;
-}
-
-.success{
-    color: green
-}
-
-.error{
-    color: red;
-}
-
-.report-input-row{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.report-row{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.center-text{
-    text-align: center;
-}
-
-.advert{
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    margin-top: 15px
-}
-
-.advert .image img{
-    width: 250px;
-    height: 250px;
-}
-
